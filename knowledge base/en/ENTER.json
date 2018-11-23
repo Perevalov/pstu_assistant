@@ -1,0 +1,30 @@
+{
+	"PRIV": {
+		"keywords": ["army", "contest", "diploma"],
+		"response": ["Here is the list of priveleges for enrollees: ..."]
+	},
+	"COST": {
+		"keywords": ["price","cost","pay","money","much","payment"],
+		"response": ["You can find information about costs here ..."]
+	},
+	"REENTER": {
+		"keywords": ["reenter","expelled","passed","finished","took","graduated"],
+		"response": ["We are always welcome people, who wants to continue study. Go here to check all the info ..."]
+	},
+	"BUDGET": {
+		"keywords": ["budget"],
+		"response": ["We have a lot of budget places. Check the quantity here ..."]
+	},
+	"DATES": {
+		"keywords": ["date", "time","day","august","july","saturday","sunday"],
+		"response": ["Enroll commission works till 31 of July. The enrollment will be on 10 of August."]
+	},
+	"EXAMS": {
+		"keywords": ["exam","exams","subjects","subject","admission"],
+		"response": ["Usually, students pass physics, chemistry or informatics. If you want to see exams for certain speciality go here: ..."]
+	},
+	"ISSUE": {
+		"keywords": ["problem","issue"],
+		"response": ["Oh, i see. To resolve this problem I have to connect you with the operator. Here is the phone number: 2-123-123"]
+	}
+}
