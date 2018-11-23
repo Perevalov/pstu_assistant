@@ -7,123 +7,72 @@ from pocketsphinx.pocketsphinx import *
 clicks = 0
 x = 0
 flag = True
+cur_data = 0
+audio2send = []
+p = pyaudio.PyAudio()
 
+config = Decoder.default_config()
+config.set_string('-hmm', '/home/alex/diploma/models/acoustic/en-en')
+config.set_string('-lm', '/home/alex/diploma/models/lm/en.lm.bin')
+config.set_string('-dict', '/home/alex/diploma/models/dic/en.dict')
+decoder = Decoder(config)
+stream = None
 
-class SpeechDetector:
-    def __init__(self):
+def save_speech(data, p):
+    # сохраняем аудио-поток в файл
 
-        # Конфигурация микрофона
-        self.CHUNK = 1024  # CHUNKS - число байт, считываемое каждый раз с микрофона
-        self.FORMAT = pyaudio.paInt16
-        self.CHANNELS = 1  # кол-во каналов 1-моно 2-стерео
-        self.RATE = 16000  # частота
-        self.SILENCE_LIMIT = 2
-        self.PREV_AUDIO = 2
-        self.THRESHOLD = 3500
-        self.num_phrases = -1
+    waveFile = wave.open("File.wav", 'wb')
+    waveFile.setnchannels(1)
+    waveFile.setsampwidth(p.get_sample_size(pyaudio.paInt16))
+    waveFile.setframerate(16000)
+    waveFile.writeframes(b''.join(data))
+    waveFile.close()
 
-        # Конфигурируем декодер
-        config = Decoder.default_config()
-        config.set_string('-hmm', '/home/alex/diploma/models/acoustic/en-en')
-        config.set_string('-lm', '/home/alex/diploma/models/lm/en.lm.bin')
-        config.set_string('-dict', '/home/alex/diploma/models/dic/en.dict')
+    return 'File.wav'
 
-        # Создаем декодер
-        self.decoder = Decoder(config)
-
-    def save_speech(self, data, p):
-        # сохраняем аудио-поток в файл
-
-        waveFile = wave.open("File.wav", 'wb')
-        waveFile.setnchannels(self.CHANNELS)
-        waveFile.setsampwidth(p.get_sample_size(self.FORMAT))
-        waveFile.setframerate(self.RATE)
-        waveFile.writeframes(b''.join(data))
-        waveFile.close()
-
-        return 'File.wav'
-
-    def decode_phrase(self, wav_file):
-        # декодируем из файла в массив н-лучших
-
-        self.decoder.start_utt()
-        stream = open(wav_file, "rb")
-        while True:
-            buf = stream.read(1024)
-            if buf:
-                self.decoder.process_raw(buf, False, False)
-            else:
-                break
-        self.decoder.end_utt()
+def decode_phrase(wav_file):
+    decoder.start_utt()
+    stream = open(wav_file,"rb")
+    while True:
+        buf = stream.read(1024)
+        if buf:
+           decoder.process_raw(buf,False,False)
+        else:
+            break
+        decoder.end_utt()
         words = []
-        [words.append(seg.word) for seg in self.decoder.seg()]
-        return [n.hypstr for n in self.decoder.nbest()]
-
-    def run(self):
-        p = pyaudio.PyAudio()
-        stream = p.open(format=self.FORMAT,
-                        channels=self.CHANNELS,
-                        rate=self.RATE,
-                        input=True,
-                        frames_per_buffer=self.CHUNK)
-
-        audio2send = []
-        rel = int(self.RATE / self.CHUNK)
-        slid_win = deque(maxlen=self.SILENCE_LIMIT * rel)
-
-        # Прикрепляем спереди аудио длиной 2сек
-        prev_audio = deque(maxlen=self.PREV_AUDIO * rel)
-        started = False
-
-        while True:
-
-            cur_data = stream.read(self.CHUNK)
-            slid_win.append(math.sqrt(abs(audioop.avg(cur_data, 4))))
-
-            if sum([x > self.THRESHOLD for x in slid_win]) > 0:
-                if started == False:
-                    started = True
-                audio2send.append(cur_data)
-
-            elif started:
-                print("Конец записи, идёт распознавание")
-                #self.speak(" Конец записи, идёт распознавание ")
-                filename = self.save_speech(list(prev_audio) + audio2send, p)
-                r = self.decode_phrase(filename)
-                #self.speak(phrase)
-                os.remove(filename)
-                stream.stop_stream()
-                stream.close()
-                p.terminate()
-
-                return str(r[0])
-                # Reset all
-                started = False
-                slid_win = deque(maxlen=self.SILENCE_LIMIT * rel)
-                prev_audio = deque(maxlen=self.PREV_AUDIO * rel)
-                audio2send = []
-                print("Слушаю ...")
-                #self.speak(" Слушаю ")
-            else:
-                prev_audio.append(cur_data)
-
-        print("* Закончили слушать")
-        stream.stop_stream()
-        stream.close()
-        p.terminate()
+        [words.append(seg.word) for seg in decoder.seg()]
+        return [n.hypstr for n in decoder.nbest()]
 
 def click_button():
-    global flag,x
+    global flag,x,cur_data,p,stream
     flag = True
-    x = 0
-    sd = SpeechDetector()
-    #sd.setup_mic()
-    s = sd.run()
-    print_dot()
+    x = 0	
+    #print_dot()
+
+    p = pyaudio.PyAudio()
+    stream = p.open(format=pyaudio.paInt16,
+                    channels=1,
+                    rate=16000,
+                    input=True,
+                    frames_per_buffer=1024)
+    print("Старт")
+    cur_data = stream.read(1024)
+
+
 def click_button_stop():
-    global flag
+    global flag,audio2send,p,stream
     flag = False
     cvs.delete("all")
+    print(cur_data)
+    audio2send.append(cur_data)
+    filename = save_speech(audio2send, p)
+    r = decode_phrase(filename)
+    print("* Закончили слушать")
+    stream.stop_stream()
+    stream.close()
+    p.terminate()
+
 
 def print_dot():
     global x, flag
