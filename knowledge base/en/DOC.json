@@ -1,26 +1,26 @@
 {
 	"ONLINE": {
-		"keywords": ["online", "email", "remote","electronic","mail","post","e-mail","courier"],
+		"keywords": ["online", "email", "remote","electronic","mail","post","e-mail","courier","send"],
 		"response": ["You can submit your documents online or by any kind of post. Our email is: docs@pstu.ru. Our address is Perm, Russia."]
 	},
 	"WHAT": {
 		"keywords": ["what","which","086","need","----","----","----"],
-		"response": ["WHAT"]
+		"response": ["To apply you need following documents: passport, diploma, 2 photos, medical ref. and exam certificate."]
 	},
 	"WHERE": {
 		"keywords": ["where","----","----","----","----","----","----","----"],
-		"response": ["WHERE"]
+		"response": ["You can find list of required documents on our website. When you collect everythin go to main building to apply or send it by post or email."]
 	},
 	"DATES": {
-		"keywords": ["date", "time","day","august","july","saturday","sunday"],
-		"response": ["DATES"]
+		"keywords": ["date", "time","day","august","july","saturday","sunday","still"],
+		"response": ["You can apply with your documents every working day from 9 to 5 till 1 of August."]
 	},
 	"HOW": {
 		"keywords": ["how","----","----","----","----","----","----"],
-		"response": ["HOW"]
+		"response": ["To collect the docs you have to check the list on our website, review everything that you have and apply any way you want"]
 	},
 	"ISSUE": {
-		"keywords": ["problem","issue","----","----","----","----","----"],
-		"response": ["ISSUE"]
+		"keywords": ["problem","issue","happened","----","----","----","----"],
+		"response": ["Oh, i see. To resolve this problem I have to connect you with the operator. Here is the phone number: 2-123-123"]
 	}
 }

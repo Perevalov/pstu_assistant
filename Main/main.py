@@ -7,6 +7,7 @@ import operator
 import numpy as np
 import sys
 import os
+import random 
 from yargy import Parser, rule, and_
 from yargy.predicates import gram, is_capitalized, dictionary
 sys.path.insert(0, '..')
@@ -29,9 +30,12 @@ y = list(map(lambda x: classes_map[x],classes))
 
 log_reg = OneVsRestClassifier(LogisticRegression(random_state=0,C=10,solver='lbfgs',)).fit(X, y)
 
+def fallback(text):
+    return "I dont understand, sorry. Can you reask in different way please"
+
 def get_subintent(preprocessed,intent):
     data = None
-    with open("/home/alex/pstu_assistant/knowledge base/en/{0}.json".format(intent)) as f:
+    with open("../knowledge base/en/{0}.json".format(intent)) as f:
         data = f.read()
     data = json.loads(data)
     probas = {}
@@ -44,27 +48,36 @@ def get_subintent(preprocessed,intent):
                 count = count + len(match.tokens)
         probas[subintent] = count/len(data[subintent]['keywords'])
     print("Вероятности субинтентов",probas)
-    subintent = max(probas.items(), key=operator.itemgetter(1))[0]
-    
-    return data[subintent]['response'][0]
+    if any(list(probas.values())) > 0.0:
+        subintent = max(probas.items(), key=operator.itemgetter(1))[0]
+        return data[subintent]['response'][0]
+    else:
+        return fallback(preprocessed)
 
 def get_answer(raw_text):
     preprocessed = preprocessing.preprocess_eng_list([raw_text])
-    print("Продобработанный текст:",preprocessed)
+    print("== Продобработанный текст:",preprocessed)
     v = vectorizer.transform(preprocessed)
     probas = log_reg.predict_proba(v)
-    print("Вероятности интентов",probas[0])
-    if max(probas[0])<0.6:
-        answer = "I dont understand, sorry"
-        print("Ответ: ",answer)
+    print("== Вероятности интентов",probas[0])
+    
+    if max(probas[0])<0.43:
+        answer = fallback(preprocessed)
+        print("== Ответ: ",answer)
         os.system("echo "" " + answer + " "" | RHVoice-test")
     else:
-        intent = idx_to_intent[np.argmax(probas[0])]
+        if list(probas[0]).index(max(probas[0])) == 3:
+            intent = 2
+        else:
+            intent = idx_to_intent[np.argmax(probas[0])]
         answer = get_subintent(str(preprocessed),intent)
-        print("Ответ: ",answer)
+        print("== Ответ: ",answer)
         os.system("echo "" " + answer + " "" | RHVoice-test")
 
+def tests():
+    list_ = np.array(df.question)
+    i = random.randint(0,len(list_))
+    print(list_[i])
+    get_answer(list_[i])
 
-#get_answer("Hello! I have a question: is it Possible to send the original passport by courier?")
 get_answer("Can you please tell me what exams are required for admission to the ASU?")
-get_answer("What is the most efficient way to loop through dataframes with pandas?")

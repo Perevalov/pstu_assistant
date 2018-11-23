@@ -1,0 +1,50 @@
+{
+	"ACCRED": {
+		"keywords": ["accreditation", "----", "----"],
+		"response": ["Our university was successfully accreditated and has all required documents."]
+	},
+	"ARMY": {
+		"keywords": ["army","military","----","----"],
+		"response": ["The army question is always important for all young men. Our university gives you a delay for study."]
+	},
+	"OPEN_DOOR": {
+		"keywords": ["open","day","door"],
+		"response": ["The open doors day is on 25th of December 2018"]
+	},
+	"SPECIALITY": {
+		"keywords": ["speciality","specialization","enrollment","direction"],
+		"response": ["We have a lot of specialities. They are all very popular. Check them here pstu.ru"]
+	},
+	"SCHOLARSHIP": {
+		"keywords": ["scholarship", "payment"],
+		"response": ["Our students are richest students in the city. The academic scholarship is 2500 rubles per month, the governors scholarship is 5000 rubles!"]
+	},
+	"PARALLEL STUDY": {
+		"keywords": ["simultaneously"],
+		"response": ["Study multiple specialities is very hard! It is possible, try if you want."]
+	},
+	"CONTACT": {
+		"keywords": ["call","contact"],
+		"response": ["You can contact as via phone 2-123-123 or email info@pstu.ru"]
+	},
+	"DISABILITIES": {
+		"keywords": ["wheelchair"],
+		"response": ["We have special program and a list of priveleges for people with disabilities."]
+	},
+	"WHEN": {
+		"keywords": ["when","August"],
+		"response": ["All the key dates are on our website."]
+	},
+	"CONTRACT": {
+		"keywords": ["payment","contract"],
+		"response": ["All the info about contract education is on our website."]
+	},
+	"WORK_PRACTICE": {
+		"keywords": ["work","practice"],
+		"response": ["Our students and people who graduated work in Top companies of the city and Russia."]
+	},
+	"KICKED": {
+		"keywords": ["kicked"],
+		"response": ["We are very sorry that you were kicked."]
+	}
+}
