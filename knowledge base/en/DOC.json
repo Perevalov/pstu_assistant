@@ -12,7 +12,7 @@
 		"response": ["You can find list of required documents on our website. When you collect everythin go to main building to apply or send it by post or email."]
 	},
 	"DATES": {
-		"keywords": ["date", "time","day","august","july","saturday","sunday","still","until","what"],
+		"keywords": ["date", "time","day","august","july","saturday","sunday","still","until","what","deadline"],
 		"response": ["You can apply with your documents every working day from 9 to 5 till 1 of August."]
 	},
 	"HOW": {
