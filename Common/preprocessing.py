@@ -55,10 +55,21 @@ def preprocess_eng_list(list_):
     new_list = []
     for l in list_:
         words = tokenizer.tokenize(l)
-        words.remove(words[0])
+#        words.remove(words[0])
         new_words = [word for word in words 
                         if lemmatizer.lemmatize(word) not in ['the','a','will','was','by','be','hello','is','it']
                         and not any(char.isdigit() for char in word)
+                    ]
+        new_list.append(' '.join(w for w in new_words))
+    return new_list
+
+def preprocess_eng_greetings_list(list_):
+    new_list = []
+    for l in list_:
+        words = tokenizer.tokenize(l)
+        #words.remove(words[0])
+        new_words = [word for word in words 
+                        if not any(char.isdigit() for char in word)
                     ]
         new_list.append(' '.join(w for w in new_words))
     return new_list

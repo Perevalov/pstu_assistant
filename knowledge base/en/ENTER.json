@@ -16,11 +16,11 @@
 		"response": ["We have a lot of budget places. Check the quantity at our website pstu.ru"]
 	},
 	"DATES": {
-		"keywords": ["date", "time","day","august","july","saturday","sunday","----"],
+		"keywords": ["date", "time","day","august","july","saturday","sunday","when","when"],
 		"response": ["Enroll commission works till 31 of July. The enrollment will be on 10 of August."]
 	},
 	"EXAMS": {
-		"keywords": ["exam","exams","subjects","subject","admission","examination","----"],
+		"keywords": ["exam","exams","subjects","subject","admission","examination","----","----"],
 		"response": ["Usually, students pass physics, chemistry or informatics. If you want to see exams for certain speciality go here: pstu.ru. All the information about exams is also on our website"]
 	},
 	"ISSUE": {

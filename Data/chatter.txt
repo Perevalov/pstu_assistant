@@ -1,0 +1,49 @@
+question;class
+Hello;GREET
+Hi;GREET
+Greetings!;GREET
+Hi, How is it going?;GREET
+How are you doing?;GREET
+Good.;GREET
+Nice to meet you.;GREET
+Thank you.;GREET
+How do you do?;GREET
+I'm doing well.;GREET
+Hi, nice to meet you.;GREET
+Thank you. You too.;GREET
+It is a pleasure to meet you.;GREET
+Thank you. You too.;GREET
+Top of the morning to you!;GREET
+Thank you kindly.;GREET
+What's up?;GREET
+Not much.;GREET
+What are your interests;GREET
+What are your favorite subjects;GREET
+What is your number;GREET
+What is your favorite number;GREET
+What can you eat;GREET
+Why can't you eat food;GREET
+What is your location;GREET
+What is your location;GREET
+Where are you from;GREET
+Where are you;GREET
+Do you have any brothers;GREET
+Who is your father;GREET
+Who is your mother;GREET
+Who is your boss;GREET
+What is your age;GREET
+What is new;GREET
+What is going on;GREET
+Tell me about yourself;GREET
+Bye;GREET
+Good bye;GREET
+Thank you very much;GREET
+Thanks brother;GREET
+Hey;GREET
+What are you doing;GREET
+What you can do for me;GREET
+You are the best;GREET
+What is your name;GREET
+How do you look like;GREET
+How is it going;GREET
+Introduce youself;GREET

@@ -12,11 +12,11 @@
 		"response": ["The open doors day is on 25th of December 2018"]
 	},
 	"SPECIALITY": {
-		"keywords": ["speciality","specialization","enrollment","direction"],
+		"keywords": ["speciality","specialization","enrollment","direction","specialities"],
 		"response": ["We have a lot of specialities. They are all very popular. Check them here pstu.ru"]
 	},
 	"SCHOLARSHIP": {
-		"keywords": ["scholarship", "payment"],
+		"keywords": ["scholarship", "payment","scholarships"],
 		"response": ["Our students are richest students in the city. The academic scholarship is 2500 rubles per month, the governors scholarship is 5000 rubles!"]
 	},
 	"PARALLEL STUDY": {
@@ -40,11 +40,19 @@
 		"response": ["All the info about contract education is on our website."]
 	},
 	"WORK_PRACTICE": {
-		"keywords": ["work","practice"],
-		"response": ["Our students and people who graduated work in Top companies of the city and Russia."]
+		"keywords": ["work","practice","salary"],
+		"response": ["Our students and people who graduated work in Top companies of the city and Russia. The salaries are also good."]
 	},
 	"KICKED": {
 		"keywords": ["kicked"],
 		"response": ["We are very sorry that you were kicked."]
+	},
+	"ENVIROMENT": {
+		"keywords": ["parking"],
+		"response": ["PSTU has great infrastructure - large parkings, gyms etc."]
+	},
+	"ENTRANCE": {
+		"keywords": ["enter","enroll"],
+		"response": ["To enter PSTU just pick the speciality, collect all the docs and send it to us."]
 	}
 }

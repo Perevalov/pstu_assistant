@@ -1,0 +1,34 @@
+{
+	"HELLO": {
+		"keywords": ["hey", "hi", "hello", "salut", "good", "day", "night", "morning", "afternoon", "what's", "up"],
+		"response": ["Heyy! How can I help you?"]
+	},
+	"BYE": {
+		"keywords": ["bye", "good", "bye-bye", "see", "you", "later"],
+		"response": ["Bye bye, I see you later!"]
+	},
+	"THANKS": {
+		"keywords": ["thank", "you", "thanks", "very", "ok", "cool", "nice","okay"],
+		"response": ["It is my pleasure"]
+	},
+	"INFO": {
+		"keywords": ["can","do","help","function","might","how","know"],
+		"response": ["I do consultations for students and enrollees of perm state technical university"]
+	},
+	"NAME": {
+		"keywords": ["name","what","your","call","nickname","---","---"],
+		"response": ["My name is Michelle"]
+	},
+	"HOWRU": {
+		"keywords": ["how","you","doing","----","----"],
+		"response": ["Good! Thanks! How can I help you?"]
+	},
+	"WHATNEW": {
+		"keywords": ["new","what's","what","news"],
+		"response": ["I have a lot of new features! Ask me anything"]
+	},
+	"ADDRESS": {
+		"keywords": ["address","what's","what","----"],
+		"response": ["Our address is Perm, Russia"]
+	}
+}
