@@ -1,0 +1,18 @@
+{
+	"DATES": {
+		"keywords": ["date", "time","day","august","july","saturday","sunday"],
+		"response": ["All the exam results will be published on 15 of August."]
+	},
+	"WHERE": {
+		"keywords": ["where","find","admission","----"],
+		"response": ["You can find all needed information about results and rating on our website"]
+	},
+	"SCORE": {
+		"keywords": ["passing score","score","budget","minimum","chance"],
+		"response": ["Every passing score depends on exam results. If you want to check the passing score for specific speciality go here pstu.ru"]
+	},
+	"ISSUE": {
+		"keywords": ["issue","problem"],
+		"response": ["Oh, i see. To resolve this problem I have to connect you with the operator. Here is the phone number: 2-123-123"]
+	}
+}

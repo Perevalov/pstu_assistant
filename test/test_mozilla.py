@@ -73,6 +73,8 @@ class SpeechDetector:
         global question
         question = text
         main.get_answer(question,True)
+        global w
+        w.insert(1.0,question)
         print(text)
 
 clicks = 0
@@ -83,7 +85,7 @@ text = ''
 
 def click_button():
     global flag,x,sd
-
+    
     x = 0
     flag = True
     t = threading.Thread(target=sd.run)

@@ -18,7 +18,7 @@ classes_map_greet = {'QUE':0, 'GREET':1}
 WAS_GREETING = False
 idx_to_intent = {0:'DOC', 1:'ENTER', 2:'ORG', 3:'PRIV', 4:'RANG', 5:'HOST'}
 
-#loading models
+print("Загрузка моделей")
 vectorizer = pickle.load(open("../bin/vectorizer", 'rb'))
 vectorizer_greet = pickle.load(open("../bin/vectorizer_greet", 'rb'))
 log_reg = pickle.load(open("../bin/log_reg", 'rb'))
@@ -85,14 +85,14 @@ def get_answer(raw_text,WAS_GREETING):
         if probas[0][0] < probas[0][1]+0.1: #если Greeting
             answer = chit_chat(raw_text)
             print("== Ответ: ",answer)
-            os.system("echo "" " + answer + " "" | RHVoice-test")
-            return
+            #os.system("echo "" " + answer + " "" | RHVoice-test -p slt")
+            return answer
     else:
         if probas[0][0] < probas[0][1]-0.7: #если Greeting
             answer = chit_chat(raw_text)
             print("== Ответ: ",answer)
-            os.system("echo "" " + answer + " "" | RHVoice-test")
-            return
+            #os.system("echo "" " + answer + " "" | RHVoice-test -p slt")
+            return answer
 
     #если по делу
     v = vectorizer.transform(preprocessed)
@@ -102,7 +102,8 @@ def get_answer(raw_text,WAS_GREETING):
     if max(probas[0])<0.43:
         answer = fallback(preprocessed)
         print("== Ответ: ",answer)
-        os.system("echo "" " + answer + " "" | RHVoice-test")
+        return answer
+        #os.system("echo "" " + answer + " "" | RHVoice-test -p slt")
     else:
         if list(probas[0]).index(max(probas[0])) == 3: #объединяем интенты (тк некорректна выборка)
             intent = 2
@@ -110,11 +111,7 @@ def get_answer(raw_text,WAS_GREETING):
             intent = idx_to_intent[np.argmax(probas[0])]
         answer = get_subintent(str(preprocessed),intent)
         print("== Ответ: ",answer)
-        os.system("echo "" " + answer + " "" | RHVoice-test")
+        return answer
+        #os.system("echo "" " + answer + " "" | RHVoice-test -p slt")
 
-def tests():
-    list_ = np.array(df.question)
-    i = random.randint(0,len(list_))
-    print(list_[i])
-    get_answer(list_[i])
 

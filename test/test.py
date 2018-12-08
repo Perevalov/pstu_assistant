@@ -124,11 +124,11 @@ root = Tk()
 root.geometry("600x300")
 root.configure(background='white')
 
-btn = Button(root, text="Начать запись", background="#555", foreground="#ccc",
+btn = Button(root, text="Start recording", background="#555", foreground="#ccc",
              padx="20", pady="8", font="16", command=click_button, width = 100)
 btn.pack()
 
-btn = Button(root, text="Остановить запись", background="#555", foreground="#ccc",
+btn = Button(root, text="Stop recording", background="#555", foreground="#ccc",
              padx="20", pady="8", font="16", command=click_button_stop, width = 100)
 btn.pack()
 

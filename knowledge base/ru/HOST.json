@@ -1,0 +1,22 @@
+{
+	"DOC": {
+		"keywords": ["documents"],
+		"response": ["To live in students hostel, you have to provide following documents: passport, medical ref and student ID."]
+	},
+	"COST": {
+		"keywords": ["price","cost","pay","money","much","payment"],
+		"response": ["The students hostel costs 1000 rubles per month. Perfect opportunity for you."]
+	},
+	"DATES": {
+		"keywords": ["when","date", "time","day","august","july","saturday","sunday","friday"],
+		"response": ["The registration to the hostel will be on 27 of August."]
+	},
+	"INFO": {
+		"keywords": ["information","how","which","rooms","probability"],
+		"response": ["Our hostel are perfect place to live for all budget and contract students. 5 minutes to campus. Every room has 2-3 beds, fridge, and toilet with shower."]
+	},
+	"ISSUE": {
+		"keywords": ["issue","problem","restriction"],
+		"response": ["Oh, i see. To resolve this problem I have to connect you with the operator. Here is the phone number: 2-123-123"]
+	}
+}
