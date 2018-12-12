@@ -1,26 +1,26 @@
 {
 	"ONLINE": {
 		"keywords": ["онлайн", "интернет", "удалённо","электронно","почта","post","e-mail","courier","send","way"],
-		"response": ["You can submit your documents online or by any kind of post. Our email is: docs@pstu.ru. Our address is Perm, Russia."]
+		"response": ["Вы можете отправить документы онлайн или любым видом курьерской доставки."]
 	},
 	"WHAT": {
-		"keywords": ["what","which","086","need","photos","format","----","----","----","----","----"],
-		"response": ["To apply you need following documents: passport, diploma, 2 photos, medical ref. and exam certificate."]
+		"keywords": ["какой","какие","086","нужны","фотографии","формат","----","----","----","----","----"],
+		"response": ["Чтобы поступить, вам нужны следующие документы: паспорт, аттестат (диплом), 2 фотографии и медицинская справка."]
 	},
 	"WHERE": {
-		"keywords": ["where","----","----","----","----","----","----","----"],
-		"response": ["You can find list of required documents on our website. When you collect everythin go to main building to apply or send it by post or email."]
+		"keywords": ["где","----","----","----","----","----","----","----"],
+		"response": ["Вы можете найти запрашиваемую вами информацию на сайте pstu.ru."]
 	},
 	"DATES": {
-		"keywords": ["date", "time","day","august","july","saturday","sunday","still","until","what","deadline"],
-		"response": ["You can apply with your documents every working day from 9 to 5 till 1 of August."]
+		"keywords": ["дата", "время","день","август","июль","суббота","воскресение","до","какого","какой","дедлайн"],
+		"response": ["Вы можете подавать документы каждый рабочий день с 9 до 6 в даты работы приемной комиссии"]
 	},
 	"HOW": {
-		"keywords": ["how","----","----","----","----","----","----"],
-		"response": ["To collect the docs you have to check the list on our website, review everything that you have and apply any way you want"]
+		"keywords": ["как","----","----","----","----","----","----"],
+		"response": ["Чтобы собрать документы и поступить, необходимо ознакомиться со списком на нашем сайте, собрать все необходимое и прийти в университет."]
 	},
 	"ISSUE": {
-		"keywords": ["problem","issue","happened","----","----","----","----"],
-		"response": ["Oh, i see. To resolve this problem I have to connect you with the operator. Here is the phone number: 2-123-123"]
+		"keywords": ["возникла","проблема","----","----","----","----","----"],
+		"response": ["Я вас понимаю и, похоже, мне необходимо связать Вас с оператором. Позвоните, пожалуйста по номеру: 2-123-123"]
 	}
 }

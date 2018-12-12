@@ -1,30 +1,30 @@
 {
 	"PRIV": {
-		"keywords": ["army", "contest", "diploma","----","----","----","----","----"],
-		"response": ["Here is the list of priveleges for enrollees: ..."]
+		"keywords": ["армия", "конкурс", "диплом","----","----","----","----","----"],
+		"response": ["Ознакомьтесь с категориями льгот в нашем университете: ..."]
 	},
 	"COST": {
-		"keywords": ["price","cost","pay","money","much","payment","----"],
-		"response": ["You can find information about costs at our website pstu.ru"]
+		"keywords": ["стоимость","цена","платить","оплата","сколько","платеж","----"],
+		"response": ["Вы можете найти информацию о стоимости на сайте: pstu.ru"]
 	},
 	"REENTER": {
-		"keywords": ["reenter","expelled","passed","finished","took","graduated","recover","deducted"],
-		"response": ["We are always welcome people, who wants to continue study. Go to our website pstu.ru to check all the info"]
+		"keywords": ["перепоступить","отчислен","закончил","академ","выпустился","восстановился","----","----"],
+		"response": ["Мы всегда ждём людей, которые хотят продолжить обучение. Подробнее о поступлении на нашем сайте pstu.ru"]
 	},
 	"BUDGET": {
-		"keywords": ["budget","----","----","----","----","----","----","----"],
-		"response": ["We have a lot of budget places. Check the quantity at our website pstu.ru"]
+		"keywords": ["бюджет","----","----","----","----","----","----","----"],
+		"response": ["У нас много бюджетных мест, количество вы можете посмотреть на нашем сайте: pstu.ru"]
 	},
 	"DATES": {
-		"keywords": ["date", "time","day","august","july","saturday","sunday","when","when"],
-		"response": ["Enroll commission works till 31 of July. The enrollment will be on 10 of August."]
+		"keywords": ["дата", "время","день","агуст","июль","суббота","воскресение","когда","----"],
+		"response": ["Приемная комиссия работает каждый рабочий день с 9 до 6, начиная с 1 июня заканчивая 31 июля."]
 	},
 	"EXAMS": {
-		"keywords": ["exam","exams","subjects","subject","admission","examination","----","----"],
-		"response": ["Usually, students pass physics, chemistry or informatics. If you want to see exams for certain speciality go here: pstu.ru. All the information about exams is also on our website"]
+		"keywords": ["экзамен","экзамены","предметы","поступление","----","----","----","----"],
+		"response": ["Обычно, абитуриенты сдают математику, русский и физику, но это не точно. Чтобы окончательно убедиться, посмотри на нашем сайте: pstu.ru"]
 	},
 	"ISSUE": {
-		"keywords": ["problem","issue","----","----","----","----","----","----"],
-		"response": ["Oh, i see. To resolve this problem I have to connect you with the operator. Here is the phone number: 2-123-123"]
+		"keywords": ["возникла","проблема","----","----","----","----","----","----"],
+		"response": ["Я вас понимаю и, похоже, мне необходимо связать Вас с оператором. Позвоните, пожалуйста по номеру: 2-123-123"]
 	}
 }

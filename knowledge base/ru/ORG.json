@@ -1,58 +1,58 @@
 {
 	"ACCRED": {
-		"keywords": ["accreditation", "----", "----"],
-		"response": ["Our university was successfully accreditated and has all required documents."]
+		"keywords": ["аккредитация", "----", "----"],
+		"response": ["Наш университет является аккредитованым и имеет все лицензии."]
 	},
 	"ARMY": {
-		"keywords": ["army","military","----","----"],
-		"response": ["The army question is always important for all young men. Our university gives you a delay for study."]
+		"keywords": ["армия","служба","военная","----"],
+		"response": ["Служба в армии - это всегда очень важный вопрос для студентов. Наш университет предоставляет отсрочку."]
 	},
 	"OPEN_DOOR": {
-		"keywords": ["open","day","door"],
-		"response": ["The open doors day is on 25th of December 2018"]
+		"keywords": ["открытых","дверей","день"],
+		"response": ["День открытых дверей состоится 25го декабря 2018 года."]
 	},
 	"SPECIALITY": {
-		"keywords": ["speciality","specialization","enrollment","direction","specialities"],
-		"response": ["We have a lot of specialities. They are all very popular. Check them here pstu.ru"]
+		"keywords": ["специальность","специализация","поступление","направление","----"],
+		"response": ["У нас очень много специальностей и все они крайне популярны. Весь список доступен на сайте: pstu.ru"]
 	},
 	"SCHOLARSHIP": {
-		"keywords": ["scholarship", "payment","scholarships"],
-		"response": ["Our students are richest students in the city. The academic scholarship is 2500 rubles per month, the governors scholarship is 5000 rubles!"]
+		"keywords": ["стипендия", "выплата","губер"],
+		"response": ["Наши студенты - самые богатые в городе. Академическая стипендия составляет 2500 рублей, а губернаторская 5000 рублей!"]
 	},
 	"PARALLEL STUDY": {
-		"keywords": ["simultaneously"],
-		"response": ["Study multiple specialities is very hard! It is possible, try if you want."]
+		"keywords": ["одновременно"],
+		"response": ["Обучение на 2-х специальностях одновременно - это сложно. Но мы предоставляем такую возможность."]
 	},
 	"CONTACT": {
-		"keywords": ["call","contact"],
-		"response": ["You can contact as via phone 2-123-123 or email info@pstu.ru"]
+		"keywords": ["телефон","связаться"],
+		"response": ["Вы можете связаться с университетом по телефону: 2-123-123 или по электронной почте: info@pstu.ru"]
 	},
 	"DISABILITIES": {
-		"keywords": ["wheelchair"],
-		"response": ["We have special program and a list of priveleges for people with disabilities."]
+		"keywords": ["инвалид"],
+		"response": ["У нас есть большое количество привелегий и инфраструктура для обучения людей с ограниченными возможностями."]
 	},
 	"WHEN": {
-		"keywords": ["when","August"],
-		"response": ["All the key dates are on our website."]
+		"keywords": ["когда","август"],
+		"response": ["Все ключевые даты доступны на нашем веб-сайте."]
 	},
 	"CONTRACT": {
-		"keywords": ["payment","contract"],
-		"response": ["All the info about contract education is on our website."]
+		"keywords": ["платеж","контракт"],
+		"response": ["Вся информация об обучении по контракту доступна нанашем веб-сайте."]
 	},
 	"WORK_PRACTICE": {
-		"keywords": ["work","practice","salary"],
-		"response": ["Our students and people who graduated work in Top companies of the city and Russia. The salaries are also good."]
+		"keywords": ["работа","практика","зарплата"],
+		"response": ["Наши студенты и выпускники работают в лучших компаниях Перми и России. Естественно, с хорошими зарплатами."]
 	},
 	"KICKED": {
-		"keywords": ["kicked"],
-		"response": ["We are very sorry that you were kicked."]
+		"keywords": ["отчислен"],
+		"response": ["Мы сожалеем, что вы были отчислены."]
 	},
 	"ENVIROMENT": {
-		"keywords": ["parking"],
-		"response": ["PSTU has great infrastructure - large parkings, gyms etc."]
+		"keywords": ["парковка"],
+		"response": ["В нашем вузе отличная инфраструктура - парковк, тренажерный зал. Все для вас."]
 	},
 	"ENTRANCE": {
-		"keywords": ["enter","enroll"],
-		"response": ["To enter PSTU just pick the speciality, collect all the docs and send it to us."]
+		"keywords": ["поступление","----"],
+		"response": ["Для того чтобы поступить, просто выбери специальность, сдай экзамены, собери документы и приходи к нам."]
 	}
 }

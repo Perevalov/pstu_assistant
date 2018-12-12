@@ -1,22 +1,22 @@
 {
 	"DOC": {
-		"keywords": ["documents"],
-		"response": ["To live in students hostel, you have to provide following documents: passport, medical ref and student ID."]
+		"keywords": ["документы"],
+		"response": ["Чтобы проживать в общежитии, вам необходимы следующие документы: паспорт, медицинская справка и зачетная книжка."]
 	},
 	"COST": {
-		"keywords": ["price","cost","pay","money","much","payment"],
-		"response": ["The students hostel costs 1000 rubles per month. Perfect opportunity for you."]
+		"keywords": ["цена","стоимость","плата","оплата","сколько","платеж"],
+		"response": ["Цена общежития составляет 1000 рублей в месяц."]
 	},
 	"DATES": {
-		"keywords": ["when","date", "time","day","august","july","saturday","sunday","friday"],
-		"response": ["The registration to the hostel will be on 27 of August."]
+		"keywords": ["когда","дата", "время","день","август","июль","суббота","воскресение","пятница"],
+		"response": ["Заселение в общежитие происходит 27 августа"]
 	},
 	"INFO": {
-		"keywords": ["information","how","which","rooms","probability"],
-		"response": ["Our hostel are perfect place to live for all budget and contract students. 5 minutes to campus. Every room has 2-3 beds, fridge, and toilet with shower."]
+		"keywords": ["информация","как","что","комнаты","вероятность"],
+		"response": ["Наши общежития - лучшее место для проживания студентов. В комнатах живет 2-3 человека. Имеется душ и холодильник"]
 	},
 	"ISSUE": {
-		"keywords": ["issue","problem","restriction"],
-		"response": ["Oh, i see. To resolve this problem I have to connect you with the operator. Here is the phone number: 2-123-123"]
+		"keywords": ["возникла","проблема","ограничение"],
+		"response": ["Я вас понимаю и, похоже, мне необходимо связать Вас с оператором. Позвоните, пожалуйста по номеру: 2-123-123"]
 	}
 }
