@@ -21,8 +21,7 @@ custom_stopwords = ['сколько','во-сколько','здравствов
 
 
 def preprocess_word(word):
-    
-    return morph.parse(word)[0].normal_form.lower()
+    return stemmer.stem(morph.parse(word)[0].normal_form.lower())
 
 def read_to_list(filename):
     with open(filename, 'r',encoding='utf8') as f:
@@ -34,11 +33,11 @@ def preprocess_list(list_):
     new_list = []
     for l in list_:
         
-        #for rule in list(ner.rules.keys()):
-         #   parser = ner.Parser(ner.rules[rule])
-          #  for match in parser.findall(l):
-           #     for _ in match.tokens:
-            #        l=l.replace(_.value,rule)
+        """for rule in list(ner.rules.keys()):
+            parser = ner.Parser(ner.rules[rule])
+            for match in parser.findall(l):
+                for _ in match.tokens:
+                    l=l.replace(_.value,rule)"""
         
         words = tokenizer.tokenize(l)
         
@@ -67,7 +66,6 @@ def preprocess_eng_greetings_list(list_):
     new_list = []
     for l in list_:
         words = tokenizer.tokenize(l)
-        #words.remove(words[0])
         new_words = [word for word in words 
                         if not any(char.isdigit() for char in word)
                     ]
