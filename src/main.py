@@ -13,16 +13,16 @@ from yargy import Parser, rule, and_
 from yargy.predicates import gram, is_capitalized, dictionary
 sys.path.insert(0, '..')
 from common import preprocessing
-classes_map = {'DOC':0, 'ENTER':1, 'ORG':2, 'PRIV':3, 'RANG':4, 'HOST':5}
+classes_map = {'DOC':0, 'ENTER':1, 'ORG':2, 'PRIV':3, 'RANG':4, 'HOST':5,'GREET':6}
 classes_map_greet = {'QUE':0, 'GREET':1}
 WAS_GREETING = False
-idx_to_intent = {0:'DOC', 1:'ENTER', 2:'ORG', 3:'PRIV', 4:'RANG', 5:'HOST'}
+idx_to_intent = {0:'DOC', 1:'ENTER', 2:'ORG', 3:'PRIV', 4:'RANG', 5:'HOST',6:'GREET'}
 
 print("Загрузка моделей")
 vectorizer = pickle.load(open("../bin/ru_vectorizer", 'rb'))
-vectorizer_greet = pickle.load(open("../bin/ru_vectorizer_greet", 'rb'))
+#vectorizer_greet = pickle.load(open("../bin/ru_vectorizer_greet", 'rb'))
 log_reg = pickle.load(open("../bin/ru_log_reg", 'rb'))
-log_reg_greet = pickle.load(open("../bin/ru_log_reg_greet", 'rb'))
+#log_reg_greet = pickle.load(open("../bin/ru_log_reg_greet", 'rb'))
 
 def fallback(text):
     return "Простите, я Вас не понял"
@@ -71,30 +71,9 @@ def chit_chat(preprocessed):
         return fallback(preprocessed)  
 
 def get_answer(raw_text,WAS_GREETING):
-    preprocessed = preprocessing.preprocess_eng_greetings_list([raw_text])
+    preprocessed = preprocessing.preprocess_list([raw_text])
     print("Продобработанный текст:",preprocessed)
     
-    #классифицируем это вопрос по делу или "как дела че делаешь"
-    v_ = vectorizer_greet.transform(preprocessed)
-    probas = log_reg_greet.predict_proba(v_)
-    print("Вероятности greeting или нет",probas[0])
-    
-    if not WAS_GREETING:
-        #классифицируем greeting или нет
-        WAS_GREETING = True
-        if probas[0][0] < probas[0][1]+0.1: #если Greeting
-            answer = chit_chat(raw_text)
-            print("Ответ: ",answer)
-            #os.system("echo "" " + answer + " "" | RHVoice-test -p slt")
-            return answer
-    else:
-        if probas[0][0] < probas[0][1]-0.7: #если Greeting
-            answer = chit_chat(raw_text)
-            print("Ответ: ",answer)
-            #os.system("echo "" " + answer + " "" | RHVoice-test -p slt")
-            return answer
-
-    #если по делу
     v = vectorizer.transform(preprocessed)
     probas = log_reg.predict_proba(v)
     print("Вероятности интентов",probas[0])
@@ -117,4 +96,3 @@ def get_answer(raw_text,WAS_GREETING):
 while(True):
     s = str(input())
     get_answer(s,True)
-	
