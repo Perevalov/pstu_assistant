@@ -19,9 +19,9 @@ WAS_GREETING = False
 idx_to_intent = {0:'DOC', 1:'ENTER', 2:'ORG', 3:'PRIV', 4:'RANG', 5:'HOST',6:'GREET'}
 
 print("Загрузка моделей")
-vectorizer = pickle.load(open("../bin/ru_vectorizer", 'rb'))
+vectorizer = pickle.load(open("bin/ru_vectorizer", 'rb'))
 #vectorizer_greet = pickle.load(open("../bin/ru_vectorizer_greet", 'rb'))
-log_reg = pickle.load(open("../bin/ru_log_reg", 'rb'))
+log_reg = pickle.load(open("bin/ru_log_reg", 'rb'))
 #log_reg_greet = pickle.load(open("../bin/ru_log_reg_greet", 'rb'))
 
 def fallback(text):
@@ -29,7 +29,7 @@ def fallback(text):
 
 def get_subintent(preprocessed,intent):
     data = None
-    with open("../knowledge base/ru/{0}.json".format(intent)) as f:
+    with open("knowledge base/ru/{0}.json".format(intent)) as f:
         data = f.read()
     data = json.loads(data)
     probas = {}
@@ -51,7 +51,7 @@ def get_subintent(preprocessed,intent):
 def chit_chat(preprocessed):
     preprocessed = str(preprocessed)
     data = None
-    with open("../knowledge base/ru/CHITCHAT.json") as f:
+    with open("knowledge base/ru/CHITCHAT.json") as f:
         data = f.read()
     data = json.loads(data)
     probas = {}
@@ -70,7 +70,7 @@ def chit_chat(preprocessed):
     else:
         return fallback(preprocessed)  
 
-def get_answer(raw_text,WAS_GREETING):
+def get_answer(raw_text):
     preprocessed = preprocessing.preprocess_list([raw_text])
     print("Продобработанный текст:",preprocessed)
     
@@ -93,6 +93,3 @@ def get_answer(raw_text,WAS_GREETING):
         return answer
         #os.system("echo "" " + answer + " "" | RHVoice-test -p slt")
 
-while(True):
-    s = str(input())
-    get_answer(s,True)

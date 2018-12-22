@@ -16,7 +16,7 @@ morph = pymorphy2.MorphAnalyzer()
 stemmer = RussianStemmer()
 lemmatizer = WordNetLemmatizer()
 
-custom_stopwords = ['сколько','во-сколько','здравствовать','здрасте', 'вообще','это', 'ещё', 'значит', 'значить','этмый','либо','хотя','таки','кроме','просто','её','сей','оно','ничто','го', 'ой', 'сегодня', 'спасибо','зеленоград','москва','пермь',
+custom_stopwords = ['сколько','во-сколько','здравствовать','здрасте', 'вообще','это', 'ещё', 'значит', 'значить','этмый','либо','хотя','таки','кроме','просто','её','сей','оно','ничто','го', 'ой', 'сегодня', 'зеленоград','москва','пермь',
 'январь','февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь']
 
 
@@ -42,8 +42,8 @@ def preprocess_list(list_):
         words = tokenizer.tokenize(l)
         
         new_words = [preprocess_word(word) for word in words 
-                        if morph.parse(word)[0].normal_form not in stopwords
-                        and not any(char.isdigit() for char in word)
+                        #if morph.parse(word)[0].normal_form not in stopwords
+                        if not any(char.isdigit() for char in word)
                         and not bool(re.search(r'[a-zA-Z]', word))
                         and morph.parse(word)[0].normal_form.lower() not in custom_stopwords
                     ]
