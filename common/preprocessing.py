@@ -50,6 +50,17 @@ def preprocess_list(list_):
         new_list.append(' '.join(w for w in new_words))
     return new_list
 
+def preprocess_multilang_list(list_):
+    new_list = []
+    for l in list_:
+        words = tokenizer.tokenize(l)
+
+        new_words = [word for word in words 
+                        if not any(char.isdigit() for char in word)
+                    ]
+        new_list.append(' '.join(w for w in new_words))
+    return new_list
+
 def preprocess_eng_list(list_):
     new_list = []
     for l in list_:
