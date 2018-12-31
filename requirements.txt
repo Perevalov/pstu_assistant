@@ -1,8 +1,10 @@
-scipy==1.0.0
+Flask==1.0.2
 pymorphy2==0.8
+scipy==1.0.0
+tensorflow==1.6.0
 numpy==1.15.0
-yargy==0.11.0
+Keras==2.1.5
 pandas==0.22.0
+yargy==0.11.0
 nltk==3.2.5
-scikit_learn==0.20.1
-flask==1.0.2
+scikit_learn==0.20.2

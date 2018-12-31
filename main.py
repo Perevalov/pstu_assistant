@@ -13,6 +13,7 @@ from yargy import Parser, rule, and_
 from yargy.predicates import gram, is_capitalized, dictionary
 sys.path.insert(0, '..')
 from common import preprocessing
+from chatter import chatter
 classes_map = {'DOC':0, 'ENTER':1, 'ORG':2, 'PRIV':3, 'RANG':4, 'HOST':5,'GREET':6}
 classes_map_greet = {'QUE':0, 'GREET':1}
 WAS_GREETING = False
@@ -29,13 +30,19 @@ en_vectorizer = pickle.load(open("bin/en_vectorizer", 'rb'))
 en_log_reg = pickle.load(open("bin/en_log_reg", 'rb'))
 
 
-def fallback(text,lang):
+def fallback(raw_text,lang):
     if lang == 'ru':
-        return "Простите, я Вас не понял"
+        answers = chatter.chatter.answer(raw_text)
+        a = ''
+        for i in range(len(answers)):
+            i = random.randint(0,len(answers)-1)
+            if len(answers[i]) > 2:
+                return answers[i]
+        return "Простите, я Вас не поняла"
     else:
         return "Sorry, I don't understand you"
 
-def get_subintent(preprocessed,intent,lang):
+def get_subintent(raw_text,preprocessed,intent,lang):
     data = None
     with open("knowledge base/{0}/{1}.json".format(lang,intent)) as f:
         data = f.read()
@@ -54,7 +61,7 @@ def get_subintent(preprocessed,intent,lang):
         subintent = max(probas.items(), key=operator.itemgetter(1))[0]
         return data[subintent]['response'][0]
     else:
-        return fallback(preprocessed,lang)
+        return fallback(raw_text,lang)
 
 def classify_lang(raw_text):
     preprocessed = preprocessing.preprocess_multilang_list([raw_text])
@@ -70,46 +77,53 @@ def classify_lang(raw_text):
     
 def get_answer(raw_text):
     
-    lang = classify_lang(raw_text)
-    if lang == 'RUS':
-        preprocessed = preprocessing.preprocess_list([raw_text])
-        print("Продобработанный текст:",preprocessed)
-
-        v = vectorizer.transform(preprocessed)
-        probas = log_reg.predict_proba(v)
-        print("Вероятности интентов",probas[0])
-
-        if max(probas[0])<0.4:
-            answer = fallback(preprocessed,'ru')
-            print("Ответ: ",answer)
-            return answer
-        else:
-            if list(probas[0]).index(max(probas[0])) == 3: #объединяем интенты (тк некорректна выборка)
-                intent = 2
-            else:
-                intent = idx_to_intent[np.argmax(probas[0])]
-            answer = get_subintent(str(preprocessed),intent,'ru')
-            print("Ответ: ",answer)
-            return answer
+    with open("log/dialog", "a") as myfile:
         
-    else:
-        preprocessed = preprocessing.preprocess_eng_list([raw_text])
-        print("Продобработанный текст:",preprocessed)
+        lang = classify_lang(raw_text)
+        if lang == 'RUS':
+            preprocessed = preprocessing.preprocess_list([raw_text])
+            print("Продобработанный текст:",preprocessed)
 
-        v = en_vectorizer.transform(preprocessed)
-        probas = en_log_reg.predict_proba(v)
-        print("Вероятности интентов",probas[0])
+            v = vectorizer.transform(preprocessed)
+            probas = log_reg.predict_proba(v)
+            
+            print("Вероятности интентов",probas[0])
 
-        if max(probas[0])<0.4:
-            answer = fallback(preprocessed,'en')
-            print("Ответ: ",answer)
-            return answer
-        else:
-            if list(probas[0]).index(max(probas[0])) == 3: #объединяем интенты (тк некорректна выборка)
-                intent = 2
+            if max(probas[0])<0.6:
+                answer = fallback(raw_text,'ru')
+                print("Ответ: ",answer)
+                myfile.write(raw_text+";"+answer+"\n")
+                return answer
             else:
-                intent = idx_to_intent[np.argmax(probas[0])]
-            answer = get_subintent(str(preprocessed),intent,'en')
-            print("Ответ: ",answer)
-            return answer
+                if list(probas[0]).index(max(probas[0])) == 3: #объединяем интенты (тк некорректна выборка)
+                    intent = 2
+                else:
+                    intent = idx_to_intent[np.argmax(probas[0])]
+                answer = get_subintent(raw_text,str(preprocessed),intent,'ru')
+                print("Ответ: ",answer)
+                myfile.write(raw_text+";"+answer+"\n")
+                return answer
+
+        else:
+            preprocessed = preprocessing.preprocess_eng_list([raw_text])
+            print("Продобработанный текст:",preprocessed)
+
+            v = en_vectorizer.transform(preprocessed)
+            probas = en_log_reg.predict_proba(v)
+            print("Вероятности интентов",probas[0])
+
+            if max(probas[0])<0.6:
+                answer = fallback(raw_text,'en')
+                print("Ответ: ",answer)
+                myfile.write(raw_text+";"+answer+"\n")
+                return answer
+            else:
+                if list(probas[0]).index(max(probas[0])) == 3: #объединяем интенты (тк некорректна выборка)
+                    intent = 2
+                else:
+                    intent = idx_to_intent[np.argmax(probas[0])]
+                answer = get_subintent(raw_text,str(preprocessed),intent,'en')
+                print("Ответ: ",answer)
+                myfile.write(raw_text+";"+answer+"\n")
+                return answer
 
