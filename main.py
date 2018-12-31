@@ -8,6 +8,7 @@ import numpy as np
 import pickle
 import sys
 import os
+from os.path import dirname, join, abspath
 import random 
 from yargy import Parser, rule, and_
 from yargy.predicates import gram, is_capitalized, dictionary
@@ -20,14 +21,18 @@ WAS_GREETING = False
 idx_to_intent = {0:'DOC', 1:'ENTER', 2:'ORG', 3:'PRIV', 4:'RANG', 5:'HOST',6:'GREET'}
 
 print("Загрузка моделей")
-lang_vectorizer = pickle.load(open("bin/lang_vectorizer", 'rb'))
-lang_classifier = pickle.load(open("bin/lang_classifier", 'rb'))
 
-vectorizer = pickle.load(open("bin/ru_vectorizer", 'rb'))
-log_reg = pickle.load(open("bin/ru_log_reg", 'rb'))
+PROJECT_PATH = "/home/alex/pstu_assistant"
 
-en_vectorizer = pickle.load(open("bin/en_vectorizer", 'rb'))
-en_log_reg = pickle.load(open("bin/en_log_reg", 'rb'))
+lang_vectorizer = pickle.load(open(join(PROJECT_PATH,"bin/lang_vectorizer"), 'rb'))
+lang_classifier = pickle.load(open(join(PROJECT_PATH,"bin/lang_classifier"), 'rb'))
+
+vectorizer = pickle.load(open(join(PROJECT_PATH,"bin/ru_vectorizer"), 'rb'))
+log_reg = pickle.load(open(join(PROJECT_PATH,"bin/ru_log_reg"), 'rb'))
+
+en_vectorizer = pickle.load(open(join(PROJECT_PATH,"bin/en_vectorizer"), 'rb'))
+en_log_reg = pickle.load(open(join(PROJECT_PATH,"bin/en_log_reg"), 'rb'))
+
 
 
 def fallback(raw_text,lang):
@@ -44,7 +49,7 @@ def fallback(raw_text,lang):
 
 def get_subintent(raw_text,preprocessed,intent,lang):
     data = None
-    with open("knowledge base/{0}/{1}.json".format(lang,intent)) as f:
+    with open(join(PROJECT_PATH,"knowledge base/{0}/{1}.json").format(lang,intent)) as f:
         data = f.read()
     data = json.loads(data)
     probas = {}
@@ -77,7 +82,7 @@ def classify_lang(raw_text):
     
 def get_answer(raw_text):
     
-    with open("log/dialog", "a") as myfile:
+    with open(join(PROJECT_PATH,"log/dialog"), "a") as myfile:
         
         lang = classify_lang(raw_text)
         if lang == 'RUS':
