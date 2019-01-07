@@ -22,9 +22,8 @@ idx_to_intent = {0:'DOC', 1:'ENTER', 2:'ORG', 3:'PRIV', 4:'RANG', 5:'HOST',6:'GR
 
 print("Загрузка моделей")
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
-PROJECT_PATH = join(BASE_DIR,"pstu_assistant")
 
 lang_vectorizer = pickle.load(open(join(PROJECT_PATH,"bin/lang_vectorizer"), 'rb'))
 lang_classifier = pickle.load(open(join(PROJECT_PATH,"bin/lang_classifier"), 'rb'))
