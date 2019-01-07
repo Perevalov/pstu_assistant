@@ -23,7 +23,8 @@ from keras.utils import get_file
 
 ABS_PATH = abspath(__file__)
 FOLDER_PATH = abspath(join(ABS_PATH,os.pardir,'chatter'))
-PROJECT_PATH = "/home/alex/pstu_assistant/"
+
+PROJECT_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 with open(join(PROJECT_PATH,"data/conversations.txt")) as f:
     content = f.readlines()
