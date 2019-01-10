@@ -1,15 +1,8 @@
 from flask import Flask, render_template, request
-from main import get_answer
-#from chatterbot import ChatBot
-#from chatterbot.trainers import ChatterBotCorpusTrainer
+from main import assistant
+
 
 app = Flask(__name__)
-
-#english_bot = ChatBot("Chatterbot", storage_adapter="chatterbot.storage.SQLStorageAdapter")
-
-#english_bot.set_trainer(ChatterBotCorpusTrainer)
-#english_bot.train("chatterbot.corpus.english")
-
 
 @app.route("/")
 def home():
@@ -18,7 +11,7 @@ def home():
 @app.route("/get")
 def get_bot_response():
     userText = request.args.get('msg')
-    return get_answer(userText)
+    return assistant.get_answer(userText)
 
 
 if __name__ == "__main__":

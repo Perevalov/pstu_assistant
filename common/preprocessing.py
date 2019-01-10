@@ -2,6 +2,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction import FeatureHasher
 import nltk
 nltk.download('stopwords')
+nltk.download('wordnet')
 from nltk.corpus import stopwords as sw
 from nltk.tokenize import RegexpTokenizer
 from nltk.stem.snowball import RussianStemmer
