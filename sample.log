@@ -1,0 +1,192 @@
+INFO:root:Ассистент инициализирован
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:RUS language detected
+INFO:root:Вероятности субинтентов 
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2019 23:05:44] "[37mGET /get?msg=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82 HTTP/1.1[0m" 200 -
+INFO:root:Ассистент инициализирован
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2019 23:11:04] "[37mGET / HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2019 23:11:04] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2019 23:11:04] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:root:RUS language detected
+ERROR:flask.app:Exception on /get [GET]
+Traceback (most recent call last):
+  File "/home/alex/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/alex/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/alex/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/alex/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/alex/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/alex/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 14, in get_bot_response
+    return assistant.get_answer(userText)
+  File "/home/alex/pstu_assistant/assistant/talkers.py", line 127, in get_answer
+    logging.info("Продобработанный текст: "+preprocessed)
+TypeError: must be str, not list
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2019 23:11:06] "[1m[35mGET /get?msg=%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82 HTTP/1.1[0m" 500 -
+INFO:root:RUS language detected
+ERROR:flask.app:Exception on /get [GET]
+Traceback (most recent call last):
+  File "/home/alex/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/alex/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/alex/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/alex/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/alex/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/alex/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 14, in get_bot_response
+    return assistant.get_answer(userText)
+  File "/home/alex/pstu_assistant/assistant/talkers.py", line 127, in get_answer
+    logging.info("Продобработанный текст: "+preprocessed)
+TypeError: must be str, not list
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2019 23:11:22] "[1m[35mGET /get?msg=%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82 HTTP/1.1[0m" 500 -
+INFO:root:Ассистент инициализирован
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2019 23:13:54] "[37mGET / HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2019 23:13:54] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+INFO:root:RUS language detected
+INFO:root:Продобработанный текст: ['привет']
+INFO:root:Вероятности интентов: [0.01873062 0.02153364 0.05823374 0.00724885 0.01799932 0.01621997
+ 0.86003386]
+INFO:root:Вероятности субинтентов {'HELLO': 0.25, 'BYE': 0.0, 'THANKS': 0.0, 'INFO': 0.0, 'NAME': 0.0, 'HOWRU': 0.0, 'WHATNEW': 0.0, 'ADDRESS': 0.0}
+INFO:root:Ответ: Привет, как я могу Вам помочь?
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2019 23:13:56] "[37mGET /get?msg=%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82 HTTP/1.1[0m" 200 -
+INFO:root:RUS language detected
+INFO:root:Продобработанный текст: ['никак']
+INFO:root:Вероятности интентов: [0.05708362 0.13698716 0.54108462 0.01374466 0.07741426 0.08093442
+ 0.09275126]
+INFO:root:fallback: Как совсем?
+INFO:root:Ответ: Как совсем?
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2019 23:13:59] "[37mGET /get?msg=%D0%BD%D0%B8%D0%BA%D0%B0%D0%BA HTTP/1.1[0m" 200 -
+INFO:root:Ассистент инициализирован
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2019 23:14:51] "[37mGET / HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2019 23:14:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+INFO:root:RUS language detected
+INFO:root:Продобработанный текст: ['привет']
+INFO:root:Вероятности интентов: [0.01873062 0.02153364 0.05823374 0.00724885 0.01799932 0.01621997
+ 0.86003386]
+INFO:root:Вероятности субинтентов {'HELLO': 0.25, 'BYE': 0.0, 'THANKS': 0.0, 'INFO': 0.0, 'NAME': 0.0, 'HOWRU': 0.0, 'WHATNEW': 0.0, 'ADDRESS': 0.0}
+INFO:root:Cубинтент Доброго времени суток, чем обязана?
+INFO:root:Ответ: Доброго времени суток, чем обязана?
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2019 23:14:53] "[37mGET /get?msg=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82 HTTP/1.1[0m" 200 -
+INFO:root:RUS language detected
+INFO:root:Продобработанный текст: ['как дел']
+INFO:root:Вероятности интентов: [0.02113525 0.01288301 0.06989997 0.01382101 0.02372102 0.00880438
+ 0.84973537]
+INFO:root:Вероятности субинтентов {'HELLO': 0.0, 'BYE': 0.0, 'THANKS': 0.0, 'INFO': 0.125, 'NAME': 0.125, 'HOWRU': 0.25, 'WHATNEW': 0.0, 'ADDRESS': 0.125}
+INFO:root:Cубинтент Спасибо, хорошо. Как я могу помочь?
+INFO:root:Ответ: Спасибо, хорошо. Как я могу помочь?
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2019 23:14:55] "[37mGET /get?msg=%D0%BA%D0%B0%D0%BA%20%D0%B4%D0%B5%D0%BB%D0%B0 HTTP/1.1[0m" 200 -
+INFO:root:Ассистент инициализирован
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2019 23:15:49] "[37mGET / HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2019 23:15:49] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+INFO:root:RUS language detected
+INFO:root:Продобработанный текст: ['привет']
+INFO:root:Вероятности интентов: [0.01873062 0.02153364 0.05823374 0.00724885 0.01799932 0.01621997
+ 0.86003386]
+INFO:root:Вероятности субинтентов {'HELLO': 0.25, 'BYE': 0.0, 'THANKS': 0.0, 'INFO': 0.0, 'NAME': 0.0, 'HOWRU': 0.0, 'WHATNEW': 0.0, 'ADDRESS': 0.0}
+INFO:root:Cубинтент Доброго времени суток, чем обязана?
+INFO:root:Ответ: Доброго времени суток, чем обязана?
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2019 23:15:54] "[37mGET /get?msg=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82 HTTP/1.1[0m" 200 -
+INFO:root:RUS language detected
+INFO:root:Продобработанный текст: ['']
+INFO:root:Вероятности интентов: [0.07287615 0.08566702 0.55854934 0.01960085 0.07025017 0.05529292
+ 0.13776356]
+INFO:root:fallback: Дебил ты, а не довакин
+INFO:root:Ответ: Дебил ты, а не довакин
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2019 23:15:56] "[37mGET /get?msg=%D0%BD%D0%B8%D1%87%D0%B5%D0%BC HTTP/1.1[0m" 200 -
+INFO:root:Ассистент инициализирован
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:Ассистент инициализирован
+INFO:root:Ассистент инициализирован
+INFO:root:Ассистент инициализирован
+INFO:root:Ассистент инициализирован
+INFO:root:RUS language detected
+INFO:root:Продобработанный текст: ['привет']
+INFO:root:Вероятности интентов: [0.01873062 0.02153364 0.05823374 0.00724885 0.01799932 0.01621997
+ 0.86003386]
+INFO:root:Вероятности субинтентов {'HELLO': 0.25, 'BYE': 0.0, 'THANKS': 0.0, 'INFO': 0.0, 'NAME': 0.0, 'HOWRU': 0.0, 'WHATNEW': 0.0, 'ADDRESS': 0.0}
+INFO:root:Cубинтент Привет, как я могу Вам помочь?
+INFO:root:Ответ: Привет, как я могу Вам помочь?
+INFO:root:RUS language detected
+INFO:root:Продобработанный текст: ['никак']
+INFO:root:Вероятности интентов: [0.05708362 0.13698716 0.54108462 0.01374466 0.07741426 0.08093442
+ 0.09275126]
+INFO:root:Вероятности субинтентов {'ACCRED': 0.0, 'ARMY': 0.0, 'OPEN_DOOR': 0.0, 'SPECIALITY': 0.0, 'SCHOLARSHIP': 0.0, 'PARALLEL STUDY': 0.0, 'CONTACT': 0.0, 'DISABILITIES': 0.0, 'WHEN': 0.0, 'HOW': 0.2, 'CONTRACT': 0.0, 'WORK_PRACTICE': 0.0, 'KICKED': 0.0, 'ENVIROMENT': 0.0, 'ENTRANCE': 0.0}
+INFO:root:Cубинтент Просто соберите все необходимые документы и приходите в главный корпус.
+INFO:root:Ответ: Просто соберите все необходимые документы и приходите в главный корпус.
+INFO:root:RUS language detected
+INFO:root:Продобработанный текст: ['никак']
+INFO:root:Вероятности интентов: [0.05708362 0.13698716 0.54108462 0.01374466 0.07741426 0.08093442
+ 0.09275126]
+INFO:root:Вероятности субинтентов {'ACCRED': 0.0, 'ARMY': 0.0, 'OPEN_DOOR': 0.0, 'SPECIALITY': 0.0, 'SCHOLARSHIP': 0.0, 'PARALLEL STUDY': 0.0, 'CONTACT': 0.0, 'DISABILITIES': 0.0, 'WHEN': 0.0, 'HOW': 0.2, 'CONTRACT': 0.0, 'WORK_PRACTICE': 0.0, 'KICKED': 0.0, 'ENVIROMENT': 0.0, 'ENTRANCE': 0.0}
+INFO:root:Cубинтент Просто соберите все необходимые документы и приходите в главный корпус.
+INFO:root:Ответ: Просто соберите все необходимые документы и приходите в главный корпус.
+INFO:root:RUS language detected
+INFO:root:Продобработанный текст: ['как дел']
+INFO:root:Вероятности интентов: [0.02113525 0.01288301 0.06989997 0.01382101 0.02372102 0.00880438
+ 0.84973537]
+INFO:root:Вероятности субинтентов {'HELLO': 0.0, 'BYE': 0.0, 'THANKS': 0.0, 'INFO': 0.125, 'NAME': 0.125, 'HOWRU': 0.25, 'WHATNEW': 0.0, 'ADDRESS': 0.125}
+INFO:root:Cубинтент Спасибо, хорошо. Как я могу помочь?
+INFO:root:Ответ: Спасибо, хорошо. Как я могу помочь?
+INFO:root:RUS language detected
+INFO:root:Продобработанный текст: ['никак']
+INFO:root:Вероятности интентов: [0.05708362 0.13698716 0.54108462 0.01374466 0.07741426 0.08093442
+ 0.09275126]
+INFO:root:Вероятности субинтентов {'ACCRED': 0.0, 'ARMY': 0.0, 'OPEN_DOOR': 0.0, 'SPECIALITY': 0.0, 'SCHOLARSHIP': 0.0, 'PARALLEL STUDY': 0.0, 'CONTACT': 0.0, 'DISABILITIES': 0.0, 'WHEN': 0.0, 'HOW': 0.2, 'CONTRACT': 0.0, 'WORK_PRACTICE': 0.0, 'KICKED': 0.0, 'ENVIROMENT': 0.0, 'ENTRANCE': 0.0}
+INFO:root:Cубинтент Спросите меня какие документы нужны для поступления, соберите их и приходите к нам!
+INFO:root:Ответ: Спросите меня какие документы нужны для поступления, соберите их и приходите к нам!
+INFO:root:RUS language detected
+INFO:root:Продобработанный текст: ['ты ващ кто']
+INFO:root:Вероятности интентов: [0.00340592 0.0052189  0.01082579 0.00612996 0.01855185 0.00498464
+ 0.95088293]
+INFO:root:Вероятности субинтентов {'HELLO': 0.0, 'BYE': 0.0, 'THANKS': 0.0, 'INFO': 0.0, 'NAME': 0.125, 'HOWRU': 0.0, 'WHATNEW': 0.0, 'ADDRESS': 0.0}
+INFO:root:Cубинтент Меня зовут Мишель.
+INFO:root:Ответ: Меня зовут Мишель.
+INFO:root:RUS language detected
+INFO:root:Продобработанный текст: ['че']
+INFO:root:Вероятности интентов: [0.02440161 0.02537676 0.04458678 0.00788176 0.01896038 0.01698231
+ 0.8618104 ]
+INFO:root:Вероятности субинтентов {'HELLO': 0.0, 'BYE': 0.0, 'THANKS': 0.0, 'INFO': 0.0, 'NAME': 0.0, 'HOWRU': 0.0, 'WHATNEW': 0.0, 'ADDRESS': 0.0}
+INFO:root:fallback: Че плачешь?
+INFO:root:Ответ: Че плачешь?
+INFO:root:RUS language detected
+INFO:root:Продобработанный текст: ['нич']
+INFO:root:Вероятности интентов: [0.07287615 0.08566702 0.55854934 0.01960085 0.07025017 0.05529292
+ 0.13776356]
+INFO:root:Вероятности субинтентов {'ACCRED': 0.0, 'ARMY': 0.0, 'OPEN_DOOR': 0.0, 'SPECIALITY': 0.0, 'SCHOLARSHIP': 0.0, 'PARALLEL STUDY': 0.0, 'CONTACT': 0.0, 'DISABILITIES': 0.0, 'WHEN': 0.0, 'HOW': 0.0, 'CONTRACT': 0.0, 'WORK_PRACTICE': 0.0, 'KICKED': 0.0, 'ENVIROMENT': 0.0, 'ENTRANCE': 0.0}
+INFO:root:fallback: яухан
+INFO:root:Ответ: яухан
+INFO:root:RUS language detected
+INFO:root:Продобработанный текст: ['']
+INFO:root:Вероятности интентов: [0.07287615 0.08566702 0.55854934 0.01960085 0.07025017 0.05529292
+ 0.13776356]
+INFO:root:Вероятности субинтентов {'ACCRED': 0.0, 'ARMY': 0.0, 'OPEN_DOOR': 0.0, 'SPECIALITY': 0.0, 'SCHOLARSHIP': 0.0, 'PARALLEL STUDY': 0.0, 'CONTACT': 0.0, 'DISABILITIES': 0.0, 'WHEN': 0.0, 'HOW': 0.0, 'CONTRACT': 0.0, 'WORK_PRACTICE': 0.0, 'KICKED': 0.0, 'ENVIROMENT': 0.0, 'ENTRANCE': 0.0}
+INFO:root:fallback: Как захочу. Ты мне не указ!
+INFO:root:Ответ: Как захочу. Ты мне не указ!
+INFO:root:RUS language detected
+INFO:root:Продобработанный текст: ['никак']
+INFO:root:Вероятности интентов: [0.05708362 0.13698716 0.54108462 0.01374466 0.07741426 0.08093442
+ 0.09275126]
+INFO:root:Вероятности субинтентов {'ACCRED': 0.0, 'ARMY': 0.0, 'OPEN_DOOR': 0.0, 'SPECIALITY': 0.0, 'SCHOLARSHIP': 0.0, 'PARALLEL STUDY': 0.0, 'CONTACT': 0.0, 'DISABILITIES': 0.0, 'WHEN': 0.0, 'HOW': 0.2, 'CONTRACT': 0.0, 'WORK_PRACTICE': 0.0, 'KICKED': 0.0, 'ENVIROMENT': 0.0, 'ENTRANCE': 0.0}
+INFO:root:Cубинтент Спросите меня какие документы нужны для поступления, соберите их и приходите к нам!
+INFO:root:Ответ: Спросите меня какие документы нужны для поступления, соберите их и приходите к нам!
+INFO:root:RUS language detected
+INFO:root:Продобработанный текст: ['']
+INFO:root:Вероятности интентов: [0.07287615 0.08566702 0.55854934 0.01960085 0.07025017 0.05529292
+ 0.13776356]
+INFO:root:Вероятности субинтентов {'ACCRED': 0.0, 'ARMY': 0.0, 'OPEN_DOOR': 0.0, 'SPECIALITY': 0.0, 'SCHOLARSHIP': 0.0, 'PARALLEL STUDY': 0.0, 'CONTACT': 0.0, 'DISABILITIES': 0.0, 'WHEN': 0.0, 'HOW': 0.0, 'CONTRACT': 0.0, 'WORK_PRACTICE': 0.0, 'KICKED': 0.0, 'ENVIROMENT': 0.0, 'ENTRANCE': 0.0}
+INFO:root:fallback: Начинай говорить - я записываю...
+INFO:root:Ответ: Начинай говорить - я записываю...

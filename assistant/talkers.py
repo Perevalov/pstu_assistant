@@ -1,6 +1,7 @@
 from os.path import join
 import json
 import operator
+import logging
 import random
 import re
 import numpy as np
@@ -20,9 +21,8 @@ class Assistant(object):
     Класс Assistant - это сущность, которая отвечает на вопросы
 
     """
-
     def __init__(self,models,chatterbox,idx_to_intent):
-        self.THRESHOLD = 0.6
+        self.THRESHOLD = 0.5
         self.lang_vectorizer = models['lang_vectorizer']
         self.lang_classifier = models['lang_classifier']
         self.ru_vectorizer = models['ru_vectorizer']
@@ -31,6 +31,8 @@ class Assistant(object):
         self.en_classifier = models['en_classifier']
         self.idx_to_intent = idx_to_intent
         self.chatterbox = chatterbox
+        logging.basicConfig(filename="sample.log", level=logging.INFO)
+        logging.info("Ассистент инициализирован")
 
     def fallback(self,raw_text,lang):
         """
@@ -40,16 +42,18 @@ class Assistant(object):
         :param lang: Код языка
         :return: Текстовый ответ
         """
+
         if lang == RUS:
             answers = self.chatterbox.answer(raw_text)
-            #TODO: разобраться с рандомом
             for i in range(len(answers)):
                 j = random.randint(0,len(answers)-1)
                 if len(answers[j]) > 2:
+                    logging.info("fallback: {0}".format(answers[j]))
                     return answers[j]
-
+            logging.info("fallback: " + "Простите, я Вас не поняла")
             return "Простите, я Вас не поняла"
         else:
+            logging.info("fallback: " + "Sorry, I don't understand you")
             return "Sorry, I don't understand you"
 
     def get_subintent(self,raw_text,preprocessed,intent,lang):
@@ -79,11 +83,12 @@ class Assistant(object):
                 count = count + len(regex.findall(preprocessed))
             probas[subintent] = count/len(data[subintent]['keywords'])
 
-        print("Вероятности субинтентов",probas)
+        logging.info("Вероятности субинтентов {0}".format(probas))
 
         if any(list(probas.values())) > 0.0:
             subintent = max(probas.items(), key=operator.itemgetter(1))[0]
             j = random.randint(0, len(data[subintent]['response'])-1)
+            logging.info("Cубинтент {0}".format(data[subintent]['response'][j]))
             return data[subintent]['response'][j]
         else:
             return self.fallback(raw_text,lang)
@@ -100,10 +105,10 @@ class Assistant(object):
         probas = self.lang_classifier.predict_proba(v)
 
         if probas[0][0] > probas[0][1]:
-            print(RUS)
+            logging.info("RUS language detected")
             return RUS
         else:
-            print(ENG)
+            logging.info("ENG language detected")
             return ENG
 
     def get_answer(self,raw_text):
@@ -117,16 +122,15 @@ class Assistant(object):
         lang = self.classify_lang(raw_text)
         if lang == RUS:
             preprocessed = preprocessing.preprocess_list([raw_text])
-            print("Продобработанный текст:",preprocessed)
+            logging.info("Продобработанный текст: {0}".format(preprocessed))
 
             v = self.ru_vectorizer.transform(preprocessed)
             probas = self.ru_classifier.predict_proba(v)
-
-            print("Вероятности интентов",probas[0])
+            logging.info("Вероятности интентов: {0}".format(probas[0]))
 
             if max(probas[0]) < self.THRESHOLD:
                 answer = self.fallback(raw_text,RUS)
-                print("Ответ: ",answer)
+                logging.info("Ответ: "+answer)
                 return answer
             else:
                 if list(probas[0]).index(max(probas[0])) == 3: #объединяем интенты (тк некорректна выборка)
@@ -134,20 +138,20 @@ class Assistant(object):
                 else:
                     intent = self.idx_to_intent[np.argmax(probas[0])]
                 answer = self.get_subintent(raw_text,str(preprocessed),intent,RUS)
-                print("Ответ: ",answer)
+                logging.info("Ответ: "+answer)
                 return answer
 
         else:
             preprocessed = preprocessing.preprocess_eng_list([raw_text])
-            print("Продобработанный текст:",preprocessed)
+            logging.info("Продобработанный текст: {0}".format(preprocessed))
 
             v = self.en_vectorizer.transform(preprocessed)
             probas = self.en_classifier.predict_proba(v)
-            print("Вероятности интентов",probas[0])
+            logging.info("Вероятности интентов {0}".format(probas[0]))
 
             if max(probas[0]) < self.THRESHOLD:
                 answer = self.fallback(raw_text,ENG)
-                print("Ответ: ",answer)
+                logging.info("Ответ: "+answer)
                 return answer
             else:
                 if list(probas[0]).index(max(probas[0])) == 3: #объединяем интенты (тк некорректна выборка)
@@ -155,7 +159,7 @@ class Assistant(object):
                 else:
                     intent = self.idx_to_intent[np.argmax(probas[0])]
                 answer = self.get_subintent(raw_text,str(preprocessed),intent,ENG)
-                print("Ответ: ",answer)
+                logging.info("Ответ: {0}".format(answer))
                 return answer
 
 
@@ -268,5 +272,4 @@ class Chatterbox(object):
 
         res = self._replier.kneighbors(questions_encoded, n_neighbors=n_answers)[1]
 
-        return self._answers_bank[res[0][0]], self._answers_bank[res[0][1]], self._answers_bank[res[0][2]], \
-               self._answers_bank[res[0][3]], self._answers_bank[res[0][4]]
+        return self._answers_bank[res[0][0]], self._answers_bank[res[0][1]], self._answers_bank[res[0][2]]
