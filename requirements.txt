@@ -9,3 +9,4 @@ nltk==3.2.5
 scikit_learn==0.20.2
 gunicorn==19.9.0
 h5py==2.7.1
+flask_cors==3.0.7

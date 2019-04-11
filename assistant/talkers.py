@@ -16,6 +16,7 @@ from config import PROJECT_PATH
 RUS = 'ru'
 ENG = 'en'
 
+
 class Assistant(object):
     """
     Класс Assistant - это сущность, которая отвечает на вопросы
